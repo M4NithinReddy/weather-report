@@ -146,7 +146,14 @@ h3{
   transform: scale(1.1); 
   cursor: pointer; 
 }
+.card zoomable {
+  transition: transform 0.2s; 
+}
 
+.card zoomable:hover {
+  transform: scale(1.1); 
+  cursor: pointer; 
+}
 @media (max-width: 1400px) {
   .weather-data .current-weather {
     padding: 20px;
