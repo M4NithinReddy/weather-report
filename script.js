@@ -42,13 +42,12 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
                 return uniqueForecastDays.push(forecastDate);
             }
         });
-
-        // Clearing previous weather data
+//here we delete the preveious data of weather
+       
         cityInput.value = "";
         currentWeatherDiv.innerHTML = "";
         weatherCardsDiv.innerHTML = "";
-
-        // Creating weather cards and adding them to the DOM
+     //here we create weather cards
         fiveDaysForecast.forEach((weatherItem, index) => {
             const html = createWeatherCard(cityName, weatherItem, index);
             if (index === 0) {
@@ -68,7 +67,7 @@ const getCityCoordinates = () => {
     const API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
 
     
-    // Get entered city coordinates (latitude, longitude, and name) from the API response
+    // here enter city via lat lon 
     fetch(API_URL).then(response => response.json()).then(data => {
         if (!data.length) return alert(`No coordinates found for ${cityName}`);
         const { lat, lon, name } = data[0];
@@ -90,7 +89,7 @@ const getUserCoordinates = () => {
                 alert("An error occurred while fetching the city name!");
             });
         },
-        error => { // Show alert if user denied the location permission
+        error => { // else conditon or alert message shoen here
             if (error.code === error.PERMISSION_DENIED) {
                 alert("Geolocation request denied. Please reset location permission to grant access again.");
             } else {
